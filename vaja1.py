@@ -14,19 +14,19 @@ def generate_numbers(N, M):
 
     return numbers
 
-# Generiranje testnih podatkov
+# Testi
 N = 500
 M = 30
 test_data = generate_numbers(N, M)
 #test_data = [55, 53, 53, 53, 53, 53, 10, 10, 11, 11, 11, 11]
 print(f"Generirani podatki: {test_data}")
 
-# Shranjevanje podatkov v binarno datoteko
+# Shranjevanje podatkov
 with open('test_data.bin', 'wb') as file:
     for number in test_data:
-        file.write(struct.pack('B', number))  # 'B' format za unsigned char (0..255)
+        file.write(struct.pack('B', number))  # 'B' je format za unsigned char (0..255)
 
-# Branje podatkov iz binarne datoteke
+# Branje podatkov
 with open('test_data.bin', 'rb') as file:
     data = file.read()
     unpacked_data = [struct.unpack('B', bytes([byte]))[0] for byte in data]
